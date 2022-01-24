@@ -1,5 +1,10 @@
-.container {
-  padding: 0 2rem;
+.top {
+  position: absolute;
+  width: 155px;
+  height: 158px;
+  left: 493px;
+  bottom: 440px;
+  background-image: url("../public/vercel.svg");
 }
 
 .main {
@@ -12,57 +17,47 @@
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+.text {
+  position: absolute;
+  width: 261px;
+  height: 35px;
+  left: 453px;
+  bottom: 390px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  color: #1a202c;
+}
+
+.form {
+  display: grid;
   justify-content: center;
   align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
+  margin-top: 230px;
+  margin-left: 100px;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+.form > div {
+  width: 500px;
+}
+
+#name {
+  width: 350px;
+}
+#pass {
+  width: 350px;
+}
+.radio {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+.radio h4 {
+  padding-left: 50px;
 }
 
 .grid {
@@ -73,16 +68,12 @@
   max-width: 800px;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.button button {
+  width: 380px;
+  height: 30px;
+  background: rgb(90, 90, 218);
+  border-radius: 4px;
+  justify-content: center;
 }
 
 .card:hover,

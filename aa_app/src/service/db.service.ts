@@ -6,7 +6,7 @@ export async function connectToDatabase () {
    let bb:any
     bb=process.env.MONGODB_URI
    const client: mongoDB.MongoClient = new mongoDB.MongoClient(bb as string);
-   let conn=await client.connect();
+   await client.connect();
    const db: mongoDB.Db = client.db(process.env.MONGODB_DB);
     let cc:any;
     cc=process.env.COLLECTION_NAME

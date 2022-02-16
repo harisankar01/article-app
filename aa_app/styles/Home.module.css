@@ -4,7 +4,7 @@
   height: 158px;
   left: 493px;
   bottom: 440px;
-  background-image: url("../public/vercel.svg");
+  background-image: url("../public/static/vercel.svg");
 }
 
 .main {
@@ -104,4 +104,37 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.register {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 30px;
+  margin-left: 414px;
+  width: 385px;
+  background-color: aquamarine;
+  border-radius: 3px;
+  border: 2px groove beige;
+  height: 30px;
+  align-items: center;
+  padding-right: 150px;
+}
+.register:hover {
+  opacity: 0.5;
+  color: rgb(88, 158, 135);
+  border-color: gold;
+}
+
+/* trail {
+  align-items: center;
+  color:#5ee7a7
+} */
+.warning {
+  margin-left: 20px;
+  width: 200px;
+  margin-top: 20px;
+  background-color: rgb(179, 46, 46);
+  color: #e2f024;
+  border-radius: 3px;
+  border: 2px thick tan;
 }

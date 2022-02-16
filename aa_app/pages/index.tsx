@@ -1,5 +1,5 @@
 import type { NextApiResponse, NextPage } from 'next'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -12,8 +12,11 @@ const Home: NextPage = (user) => {
     password:""
   }
   interface log{
-    status:string
+    status:string,
+    user:string,
+    userid:{}
   }
+  const [warn, setwarn] = useState("");
   const router=useRouter();
   const [login, setlogin] = useState(init);
   const handler=async(e:any) =>{
@@ -22,19 +25,28 @@ const Home: NextPage = (user) => {
       method:"POST",
       body:JSON.stringify(login),
     })
-      let res:log=await response.json()
+      let res:log=await response.json();
       if(res.status=="sucess"){
-        router.push('/home');
+        if(res.user==="Admin"){
+          router.push(`/admin/${res.userid}`);
+        }
+        else{
+          router.push(`/user/${res.userid}`)
+        }
       }
       else{
-        console.log("eerrr");
-        
+        setwarn("Please check your credentials");
       }
       
   }
+useEffect(() => {
+  setwarn("")
+}, []);
+
   
   return (
     <div className={styles.container}>
+      <div className={styles.warning}>{warn}</div>
       <Head>
         <title>Login Page</title>
       </Head>
@@ -64,11 +76,10 @@ const Home: NextPage = (user) => {
           </div>
         </form>
       </div>
+      <button type='button' onClick={()=>(router.push('/register'))} className={styles.register}>Register</button>
     </div>
   )
 }
-// export async function getServerSideProps() {
-  
-// }
+
 
 export default Home

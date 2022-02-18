@@ -8,10 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-// import FirstPageIcon from '@mui/icons-material/FirstPage';
-// import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-// import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-// import LastPageIcon from '@mui/icons-material/LastPage';
+import { io } from 'socket.io-client'
+const socket =io("http://localhost:4000");
 import { Grid, Typography,TablePagination,IconButton } from '@mui/material';
 import { Avatar } from '@material-ui/core';
 import { Db, ObjectId } from 'mongodb'
@@ -19,7 +17,6 @@ import { connectToDatabase } from "../../../src/service/db.service";
 import { Router, useRouter } from 'next/router';
 import Dropdown from '../../../components/dropdown';
 import Popup from '../../../components/popup';
-import  Model  from 'react-ts-modal';
 const useStyles = makeStyles((theme)=>({
   table: {
     minWidth: 650
@@ -53,8 +50,10 @@ const useStyles = makeStyles((theme)=>({
 }));
 export default function Welcome({admin,val,finlae}:any){
   const [state, setstate] = useState(false)
-  // const [lock, setlock] = useState(true);
-  const [auth_name, setauth_name] = useState("");
+  const [lock, setlock] = useState(true);
+  const [auth_title, setauth_title] = useState("")
+  const [auth_lock, setauth_lock] = useState(false);
+  const [lock_msg, setlock_msg] = useState("")
   const [cont, setcont] = useState("");
   const [id, setid] = useState("");
   const [titl, settitl] = useState("")
@@ -67,6 +66,19 @@ export default function Welcome({admin,val,finlae}:any){
     time:Date,
     Status:string
   }
+  socket.on("reciever",(msg:string,lock:boolean,title:string)=>{
+    setlock_msg(msg)
+    setauth_lock(lock);
+    setauth_title(title);
+  })
+  useEffect(() => {
+    if(lock){
+      socket.emit("event",`admin ${admin.name}  is viewing article ${titl}`,lock,titl)
+    }
+    else{
+      socket.emit("event","",lock,"")
+    }
+  },[lock]);
     const classes = useStyles();
     const router=useRouter();
      let arr=new Array();
@@ -117,11 +129,8 @@ export default function Welcome({admin,val,finlae}:any){
  const [drop, setdrop] = useState<boolean>(false)
   return (
     <>
-    {state && <Popup state={setstate} title={titl} content={cont} user_id={id}  />}
+    {state && <Popup state={setstate} title={titl} content={cont} user_id={id} lock={setlock} />}
     <Wrapper>
-      <span>
-      {/* {lock && `author ${auth_name} is viewing ${titl}`} */}
-      </span>
       <div>
         <span ><img style={{width:80, height:80, top:10}} src="/static/vercel.svg" alt="img" className='img'/></span>
         <span style={{marginLeft:70}}>Article Submission</span>
@@ -142,6 +151,7 @@ export default function Welcome({admin,val,finlae}:any){
       </div>
     </Wrapper>
     {drop && Dropdown({val:true})}
+    <div className='loock'>{lock_msg}</div>
     <TableContainer component={Paper} className={classes.fulltable}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -156,12 +166,14 @@ export default function Welcome({admin,val,finlae}:any){
         <TableBody>
           {rows.map((row) => (
             <TableRow style={{cursor:'pointer'}} key={row.title} onClick={()=>{
+              console.log(auth_lock);
+              if(!auth_lock || row.title!=auth_title){
               setstate(!state);
-              // setlock(!lock);
-              setauth_name(admin.name);
+              setlock(!lock);
               setcont(row.Content);
               setid(row.user_id);
               settitl(row.title);
+              }
               }}>
               <TableCell>
                 <Grid className={classes.status} 
@@ -192,6 +204,12 @@ export default function Welcome({admin,val,finlae}:any){
        }
        .bor:hover{
          color:rgb(46,93,97);
+       }
+       .loock{
+         position:absolute;
+         background-color:rgb(186,255,255);
+         border-radius:3px;
+         box-shadow:2px 1px rgb(46,93,97);
        }
        `}
        </style>

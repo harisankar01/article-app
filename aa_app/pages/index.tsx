@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
 import { useRouter } from 'next/router'
 const Home: NextPage = (user) => {
   const [remember, setremember] = useState(true);
@@ -42,6 +41,7 @@ const Home: NextPage = (user) => {
       
   }
 useEffect(() => {
+
   setwarn("")
 }, []);
 

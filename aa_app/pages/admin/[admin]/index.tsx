@@ -53,6 +53,8 @@ const useStyles = makeStyles((theme)=>({
 }));
 export default function Welcome({admin,val,finlae}:any){
   const [state, setstate] = useState(false)
+  // const [lock, setlock] = useState(true);
+  const [auth_name, setauth_name] = useState("");
   const [cont, setcont] = useState("");
   const [id, setid] = useState("");
   const [titl, settitl] = useState("")
@@ -75,10 +77,18 @@ export default function Welcome({admin,val,finlae}:any){
       const value= setInterval(()=>{
          arr.map((n:Date)=>{
           const dd=new Date();
+          let fin:string
           const difference =dd.getTime()- new Date(n).getTime();
-          const h:number = Math.floor(
+          let h:number = Math.floor(
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        final.push(h);
+        let d:number=Math.floor(difference / (1000 * 60 * 60 * 24));
+        if(d<0 || h<0){
+          fin="no valid date"
+        }
+        else{
+             fin=d+"days"+h+"hrs"
+        }
+        final.push(fin);
         })
         settime(final);
       },1000)
@@ -88,8 +98,8 @@ export default function Welcome({admin,val,finlae}:any){
     }
   }, [])
      let count:number=0;
+      let i:number=0;
      val.map((n:article)=>{
-       let i=0;
       const table={
        user_id:n.user_id,
        Content:n.content,
@@ -97,7 +107,7 @@ export default function Welcome({admin,val,finlae}:any){
        name:finlae[i],
        title:n.title,
        time:new Date(n.time).toLocaleString(),
-       TimeSinceSubmsion:time[count]+"hrs",
+       TimeSinceSubmsion:time[count],
      }
      i=i+1;
      count++;
@@ -107,15 +117,18 @@ export default function Welcome({admin,val,finlae}:any){
  const [drop, setdrop] = useState<boolean>(false)
   return (
     <>
-    {state && <Popup state={setstate} title={titl} content={cont} user_id={id}/>}
-    <Wrapper >
+    {state && <Popup state={setstate} title={titl} content={cont} user_id={id}  />}
+    <Wrapper>
+      <span>
+      {/* {lock && `author ${auth_name} is viewing ${titl}`} */}
+      </span>
       <div>
         <span ><img style={{width:80, height:80, top:10}} src="/static/vercel.svg" alt="img" className='img'/></span>
         <span style={{marginLeft:70}}>Article Submission</span>
         </div>
         <div>
           <span ><img style={{width:20, height:20}} src='/static/chart-svgrepo-com.svg' alt='chart'/>Submission</span>
-          <span style={{display:'flex',justifyContent:'flex-start',paddingTop:10 }}><img style={{width:20, height:20}} src='/static/grid-svgrepo-com.svg' alt='auth'/>Authors</span>
+          <span onClick={()=>{router.push(router.asPath+'/authors')}} style={{display:'flex',cursor:'pointer',justifyContent:'flex-start',paddingTop:10 }}><img style={{width:20, height:20}} src='/static/grid-svgrepo-com.svg' alt='auth'/>Authors</span>
         </div>
       <div className='flex'>
         <span><img style={{width:20, height:20}} src="/static/search-svgrepo-com.svg" alt='search'/></span>
@@ -144,6 +157,8 @@ export default function Welcome({admin,val,finlae}:any){
           {rows.map((row) => (
             <TableRow style={{cursor:'pointer'}} key={row.title} onClick={()=>{
               setstate(!state);
+              // setlock(!lock);
+              setauth_name(admin.name);
               setcont(row.Content);
               setid(row.user_id);
               settitl(row.title);

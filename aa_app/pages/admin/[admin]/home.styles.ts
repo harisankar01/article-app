@@ -45,6 +45,7 @@ export const Button=styled.div`
     margin-left:5px;
     color:white;
     transition:filter 300ms;
+    position:absolute;
     button{
         background-color:rgb(195,235,225);
         border-radius:4px;

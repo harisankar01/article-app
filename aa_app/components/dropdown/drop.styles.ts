@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Wraper=styled.div`
     display:flex;
-     transition: background 600ms;
+    transition: background 600ms;
     flex-direction:row-reverse;
+    justify-content:flex-start;
     poition:absolute;
     overflow:hidden;
     margin-left:1080px;
@@ -16,6 +17,7 @@ export const Wraper=styled.div`
 ul{
     list-style-type:none;
     width:100%;
+    padding-left:10px;
     }
 li{
     width:100%;

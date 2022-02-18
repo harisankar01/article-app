@@ -38,9 +38,9 @@ function Menu(){
   return(
     <Wraper>
     <ul>
-      <li><Link href={linkk}>My Profile</Link></li>
-      <li><Link href='/settings'>Setings</Link></li>
-      <li onClick={handler}>LogOut</li>
+      <li style={{cursor:"pointer"}}><Link href={linkk}>My Profile</Link></li>
+      <li style={{cursor:"pointer"}}><Link href='/settings'>Setings</Link></li>
+      <li style={{cursor:"pointer"}} onClick={handler}>LogOut</li>
     </ul>
     </Wraper>
   )

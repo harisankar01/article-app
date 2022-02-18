@@ -3,19 +3,21 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { connectToDatabase } from '../src/service/db.service'
 
 import { useRouter } from 'next/router'
 const Home: NextPage = (user) => {
+  const [remember, setremember] = useState(true);
   const init={
     name:"",
-    password:""
+    password:"",
+    rememberme:remember
   }
   interface log{
     status:string,
     user:string,
     userid:{}
   }
+
   const [warn, setwarn] = useState("");
   const router=useRouter();
   const [login, setlogin] = useState(init);
@@ -67,7 +69,10 @@ useEffect(() => {
             }}></input>
           </div>
           <div className={styles.radio}>
-            <input type='checkbox' id={styles.rad}></input>
+            <input type='checkbox' id={styles.rad} onClick={()=>{
+            setremember(!remember);
+            setlogin({...login,rememberme:remember})
+            }}></input>
             <label htmlFor='rad'>Remember ME</label>
            <h4> <a href='/'> Forget Password?</a></h4>
           </div>

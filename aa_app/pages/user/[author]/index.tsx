@@ -72,7 +72,15 @@ export default function Welcome({author,val}:any){
           const difference =dd.getTime()- new Date(n).getTime();
           const h:number = Math.floor(
         (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        final.push(h);
+        let fin:string
+        let d:number=Math.floor(difference / (1000 * 60 * 60 * 24));
+        if(d<0 || h<0){
+          fin="no valid date"
+        }
+        else{
+             fin=d+"days"+h+"hrs"
+        }
+        final.push(fin);
         })
         settime(final);
       },1000)

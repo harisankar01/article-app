@@ -1,19 +1,22 @@
 import { NextApiRequest,NextApiResponse } from "next";
-import { Db } from 'mongodb'
+import { Db, ObjectId } from 'mongodb'
 import { connectToDatabase } from "../../src/service/db.service";
 import { compare } from 'bcrypt';
 import cookie from 'cookie';
 import { sign } from 'jsonwebtoken';
 export default async function(req:NextApiRequest,res:NextApiResponse){
+  console.log(req.body);
+  
     interface n{
-        _id:Number,
+        _id:ObjectId,
         name:string,
         user_type:string,
         password:string
     }
     interface user{
         name:string,
-        password:string
+        password:string,
+        rememberme:boolean
     }
     try {
     const db:Db=await connectToDatabase()
@@ -23,7 +26,7 @@ export default async function(req:NextApiRequest,res:NextApiResponse){
     const secret:any=process.env.SECRET_NAME
     userrr.map((r:n)=>{
         if(r.name==logger.name && r.password==logger.password){
-        const claims = { name: r.name };
+        const claims = {user_type:r.user_type,_id:r._id,rememberme:logger.rememberme};
         const jwt = sign(claims, secret as string, { expiresIn: '1h' });
         res.setHeader('Set-Cookie', cookie.serialize('auth', jwt, {
           httpOnly: true,

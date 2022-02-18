@@ -6,7 +6,7 @@ interface props{
   state:(x:boolean)=>void,
   title:string,
   content:string,
-  user_id:string
+  user_id:string,
 }
 const Popup:React.FC<props>=({state,title,content,user_id})=>{
   const [comment, setcomment] = React.useState("");
@@ -50,6 +50,7 @@ const Popup:React.FC<props>=({state,title,content,user_id})=>{
           <button
             onClick={() => {
               state(false);
+              // lock(false);
             }}
           >
             X

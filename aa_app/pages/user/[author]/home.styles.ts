@@ -59,3 +59,6 @@ export const Button=styled.div`
         filter:brightness(1.2);
     }
 `;
+const Comp=styled.div`
+`
+export default  Comp;

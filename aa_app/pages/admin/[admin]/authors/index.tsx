@@ -105,13 +105,12 @@ interface props{
     val:[],
     finalea:[]
 }
-export  const Tablee:NextPage<props>=({val,finalea})=> {
+const  Tablee:NextPage<props>=({val,finalea})=> {
   interface n{
     _id:ObjectId,
     name:string,
     email:string
   }  
-  console.log(finalea);
   
   interface art{
     prop_1:number[],
@@ -131,8 +130,6 @@ export  const Tablee:NextPage<props>=({val,finalea})=> {
       rows.push(table);
  
   })
-
-  console.log(val,finalea)
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);

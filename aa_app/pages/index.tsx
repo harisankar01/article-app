@@ -4,7 +4,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
-const Home: NextPage = (user) => {
+import Link from 'next/link'
+import { ObjectId } from 'mongodb'
+const Home: NextPage = () => {
   const [remember, setremember] = useState(true);
   const init={
     name:"",
@@ -14,7 +16,7 @@ const Home: NextPage = (user) => {
   interface log{
     status:string,
     user:string,
-    userid:{}
+    userid:ObjectId
   }
 
   const [warn, setwarn] = useState("");
@@ -27,21 +29,25 @@ const Home: NextPage = (user) => {
       body:JSON.stringify(login),
     })
       let res:log=await response.json();
+      console.log(res);
       if(res.status=="sucess"){
         if(res.user==="Admin"){
           router.push(`/admin/${res.userid}`);
+          return;
         }
         else{
+          console.log(res.userid);
           router.push(`/user/${res.userid}`)
+          return;
         }
       }
       else{
         setwarn("Please check your credentials");
+        return;
       }
       
   }
 useEffect(() => {
-
   setwarn("")
 }, []);
 
@@ -74,7 +80,7 @@ useEffect(() => {
             setlogin({...login,rememberme:remember})
             }}></input>
             <label htmlFor='rad'>Remember ME</label>
-           <h4> <a href='/'> Forget Password?</a></h4>
+           <h4> <Link href='/'> Forget Password?</Link></h4>
           </div>
           <div className={styles.button}>
             <button type='submit' onClick={handler}>Login Now</button>

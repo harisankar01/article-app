@@ -23,3 +23,6 @@ span{
     margin-top:5px;
 }
 `;
+const Comp=styled.div`
+`
+export default  Comp;

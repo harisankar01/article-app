@@ -57,7 +57,7 @@ export default function Article() {
         throw new Error(status as string)
       }
     } catch (error) {
-      console.log('Failed to publish article')
+      console.error(error);
     }
    }
 

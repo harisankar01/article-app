@@ -12,6 +12,7 @@ export const Wraper=styled.div`
     border:3px thick rgb(255,229,209) ;
     background-color:rgb(209,209,255);
     transform:translateX(-15%);
+    transition: rgb(209,209,255) 0.3s;
     padding:1rem;
 
 ul{

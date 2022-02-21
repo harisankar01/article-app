@@ -69,3 +69,6 @@ button:hover{
      color:green;
 }
 `
+const Comp=styled.div`
+`
+export default  Comp;

@@ -37,7 +37,7 @@ const RegForm = () => {
         throw new Error(status as string)
       }
     } catch (error) {
-      console.log('Failed to add user')
+      console.error(error)
     }
   };
 

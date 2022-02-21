@@ -65,3 +65,6 @@ border-readius:5px,
 border-style:thick,
 color:'green';
 `;
+const Comp=styled.div`
+`
+export default  Comp;

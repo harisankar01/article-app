@@ -5,9 +5,7 @@
   <h3>The author can also give remarks</h3>
 <h6>Clone the repo and run</h6>
   ```
-  cd aa_app
-  npm install
-  npm run dev
+  $ cd aa_app
   ```
 <blockquote>a next js app about writing articles and submitting them for review
   

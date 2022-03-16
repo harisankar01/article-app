@@ -31,3 +31,4 @@
 <fotter>
   See the  Readme file for tech stack and backend applications used in the app in the aa_app an backend folders
   </fotter>
+I am still working on this app to add many awesome futures such as a chat option and such..

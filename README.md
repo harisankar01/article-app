@@ -4,10 +4,16 @@
   article<h3>
   <h3>The author can also give remarks</h3>
 <h6>Clone the repo and run</h6>
-  <Code>cd aa_app </code>
-<code>  npm install </code>
+```bash
+cd aa_app
+```
+```bash
+npm run dev
+```
 <br><br>
-<code> npm run dev </code>
+```bash
+npm run dev
+```
 
 <blockquote>a next js app about writing articles and submitting them for review
   

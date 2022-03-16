@@ -5,11 +5,11 @@
   <h3>The author can also give remarks</h3>
 <h6>Clone the repo and run</h6>
 ```
-cd aa_app
+  <code>cd aa_app</code>
   
-npm install
+  <code>npm install</code>
   
-npm run dev
+  <code>npm run dev</code>
 ```
 <blockquote>a next js app about writing articles and submitting them for review
   

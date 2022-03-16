@@ -4,7 +4,7 @@
   article<h3>
   <h3>The author can also give remarks</h3>
 <h6>Clone the repo and run</h6>
-  ```bash
+  ```sh
   cd aa_app
   npm install
   npm run dev

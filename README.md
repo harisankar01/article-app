@@ -4,11 +4,11 @@
   article<h3>
   <h3>The author can also give remarks</h3>
 <h6>Clone the repo and run</h6>
-  <code>cd aa_app
- 
+  '''bash
+  cd aa_app
   npm install
-  
-  npm run dev</code>
+  npm run dev
+  '''
 <blockquote>a next js app about writing articles and submitting them for review
   
   <h3>the real website is hosted on <a>https://author-admin-app.herokuapp.com/</a></h3>

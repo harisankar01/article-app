@@ -10,7 +10,6 @@
   <code>npm install</code>
   
   <code>npm run dev</code>
-```
 <blockquote>a next js app about writing articles and submitting them for review
   
   <h3>the real website is hosted on <a>https://author-admin-app.herokuapp.com/</a></h3>

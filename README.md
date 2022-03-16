@@ -6,12 +6,9 @@
 <h6>Clone the repo and run</h6>
 ```bash
 cd aa_app
-```
-```bash
-npm run dev
-```
-<br><br>
-```bash
+  
+npm install
+  
 npm run dev
 ```
 

@@ -25,7 +25,7 @@
   ```
 <blockquote>a next js app about writing articles and submitting them for review
   
-  <h3>the real website is hosted on <a>https://author-admin-app.herokuapp.com/</a></h3>
+  <h3>the real website is hosted on</h3> (https://author-admin-app.herokuapp.com/)
 </blockquote>
   <br>
 <fotter>

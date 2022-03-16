@@ -10,4 +10,4 @@
  - [Socket](https://socket.io/)
  - [Socket client](https://socket.io/docs/v3/client-installation/)
 
-<h3>This is not fully functional in deployed environment<h3>
+<p>This is not fully functional in deployed environment</p>

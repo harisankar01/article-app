@@ -122,7 +122,7 @@ export default function Welcome({author,val}:any){
       </div>
     </Wrapper>
    <Button><button type="button" onClick={()=>{router.push(router.asPath+"/newArticle")}}>Add Article</button> </Button> 
-     {drop && Dropdown({val:true})}
+     {drop && <Dropdown val={true} nam={author.name}/>}
     <TableContainer component={Paper} className={classes.fulltable}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { ObjectId } from 'mongodb'
 const Home: NextPage = () => {
-  const [remember, setremember] = useState(true);
+  const [remember, setremember] = useState(false);
   const init={
     name:"",
     password:"",
@@ -29,14 +29,15 @@ const Home: NextPage = () => {
       body:JSON.stringify(login),
     })
       let res:log=await response.json();
-      console.log(res);
       if(res.status=="sucess"){
+        if(remember){
+          localStorage.setItem('user', JSON.stringify(res))
+          }
         if(res.user==="Admin"){
           router.push(`/admin/${res.userid}`);
           return;
         }
         else{
-          console.log(res.userid);
           router.push(`/user/${res.userid}`)
           return;
         }
@@ -48,7 +49,20 @@ const Home: NextPage = () => {
       
   }
 useEffect(() => {
-  setwarn("")
+  setwarn("");
+   const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+       if(foundUser.user==="Admin"){
+          router.push(`/admin/${foundUser.userid}`);
+          return;
+        }
+        else{
+          router.push(`/user/${foundUser.userid}`)
+          return;
+        }
+        
+    }
 }, []);
 
   

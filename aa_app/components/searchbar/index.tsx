@@ -3,30 +3,61 @@ interface props{
     search:(x:boolean)=>void,
     ser:boolean;
 }
-
+interface art{
+  data: Array<{
+    title:string,
+    _id:string,
+  }>,
+}
+let articles:art;
 const  Search:React.FC<props>=({search,ser})=> {
-  const [searc_res, setsearc_res] = React.useState<string>("")
-  const handler=async(event: React.KeyboardEvent<HTMLSpanElement>,data:string) => {
+  const [results, setresults] = React.useState<boolean>(false);
+  const handler=async(e:string) => {
+    console.log("");
+      if(!e){
+        setresults(false);
+        console.log(results);
+        return;
+      }
     if(ser){
-      if(event.code==="Enter"){
-        event.preventDefault();
       let response= await fetch('/api/search',{
       method:"POST",
-      body:JSON.stringify(searc_res),
-    })
-        let articles=await response.json();
-        console.log(articles);
+      body:JSON.stringify(e),
+      })
+        articles=await response.json();
+        setresults(true);
+        console.log(results);
         
-      }
+        return;
+    }
+    else{
+      setresults(false);
+      return;
     }
     
   }
   return (
       <>
     <div className='search'>
-        <input type="text" placeholder='search articles' onChange={(e) => {
-          setsearc_res(e.target.value) 
-        }}  onKeyDown={(e)=>{handler(e,searc_res)}} ></input>
+        <input type="text" placeholder='search articles' onChange={(e)=>{
+          handler(e.target.value);
+        }
+        }></input>
+      </div>
+      <div className='search_res'>
+      {results && (
+        <div className="dataResult">
+          {articles?((articles.data).map((n) => {
+            return (
+              <a className="dataItem" key={n._id} >
+                <p>{n.title} </p>
+              </a>
+            );
+          })):
+          <></>
+          }
+        </div>
+      )}
       </div>
       <style jsx>{`
       .search::before{
@@ -70,6 +101,35 @@ const  Search:React.FC<props>=({search,ser})=> {
          outline:none;
          color:blue;
        }
+.dataResult {
+  margin-top: 25px;
+  width: 250px;
+  height: 180px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+.search_res{
+  width:1220px;
+  display:flex;
+  justify-content:flex-end;
+}
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+
+.dataResult .dataItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.dataItem p {
+  margin-left: 10px;
+}
       `   
       }
       </style>

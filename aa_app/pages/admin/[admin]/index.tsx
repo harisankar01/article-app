@@ -161,7 +161,7 @@ export default function Welcome({ admin, val, finlae }: any) {
           </span>
         </div>
       </Wrapper>
-      {drop && Dropdown({ val: true })}
+      {drop && <Dropdown val={true} nam={admin.name} />}
       {search && <Search search={setsearch}  ser={search} />}
       <div className='loock'>{lock_msg}</div>
       <TableContainer component={Paper} className={classes.fulltable}>

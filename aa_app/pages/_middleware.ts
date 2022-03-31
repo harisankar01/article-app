@@ -11,11 +11,15 @@ export default function middleware(req:NextRequest){
             verify(jwt,secret);
             return NextResponse.next();
         }catch(e){
-            return NextResponse.redirect("/")
+            const url = req.nextUrl.clone()
+            url.pathname = '/'
+            return NextResponse.rewrite(url)
         }
         }
         else{
-            return NextResponse.redirect("/");
+            const url = req.nextUrl.clone()
+            url.pathname = '/'
+            return NextResponse.rewrite(url)
         }
     }
 }

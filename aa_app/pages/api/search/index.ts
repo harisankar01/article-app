@@ -13,16 +13,14 @@ switch (method) {
         let arr=new Array();
         const str:string=req.body;
         const searcher=str.substring(1, str.length-1);
-        console.log(searcher);
         arr=JSON.parse(JSON.stringify( await  db.collection("articles").find({title:{$regex:`^${searcher}`}}).toArray()));
-        console.log(arr);
-        res.status(201).json({ success: true,data:arr})
+        res.status(201).json({data:arr})
       } catch (error) {
-        res.status(400).json({ success: false,data:null })
+        res.status(400).json({data:null })
       }
       break
      default:
-      res.status(400).json({ success: false,data:null})
+      res.status(400).json({data:null})
       break
     
   }

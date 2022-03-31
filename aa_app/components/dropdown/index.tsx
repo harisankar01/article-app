@@ -2,26 +2,32 @@ import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
 import React, { Children, useState } from 'react'
 import { Wraper } from './drop.styles'
-
-const Dropdown=({val}:any) =>{
-
+interface props{
+  val:any,
+  nam:string,
+}
+const Dropdown:React.FC<props>=({val,nam}) =>{
   return val? (
    <div>
-     <Menu/>
+     <Menu namee={nam}/>
    </div>
   ):(
     <div>
-      dasasd
+      Some Error occured
     </div>
   )
 }
-function Menu(){
+interface fiin{
+  namee:string,
+}
+function Menu({namee}:fiin){
    interface log{
     status:string,
   }
     const router=useRouter();
-    const linkk=`/${router.query.author}/profile`;
+    const linkk=`/user/${router.query.author}/profile?name=${namee}`;
     const  handler=async(e:any)=>{
+        localStorage.clear();
        e.preventDefault();
        let response= await fetch('/api/logout',{
       method:"GET",
@@ -38,8 +44,8 @@ function Menu(){
   return(
     <Wraper>
     <ul>
-      <li style={{cursor:"pointer"}}><Link href={linkk}>My Profile</Link></li>
-      <li style={{cursor:"pointer"}}><Link href='/settings'>Setings</Link></li>
+      <li style={{cursor:"pointer"}}><Link href={linkk} as={`/user/${router.query.author}/profile`}>My Profile</Link></li>
+      <li style={{cursor:"pointer"}}><Link href='/user/${router.query.author}/settings'>Setings</Link></li>
       <li style={{cursor:"pointer"}} onClick={handler}>LogOut</li>
     </ul>
     </Wraper>

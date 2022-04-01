@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h1> article-app</h1>
+<h1>Description</h1>
+  <h3>A full stack application in which authors can submit articles for admins to review and accept or reject the
+  article<h3>
+  <h3>The author can also give remarks</h3>
+<h6>Clone the repo and run</h6>
+  
+  ```
+  cd aa_app
+  
+  ```
+  <h4>Install the packages using npm</h4>
+  
+  ```
+  
+  npm install
+  
+  ```
+  <h4>Run the local environment on localhost:3000</h4>
+  
+  ```
+  
+  npm run dev
+  
+  ```
+<blockquote>a next js app about writing articles and submitting them for review
+  
+  <h3>the real website is hosted on</h3> (https://author-admin-app.herokuapp.com/)
+</blockquote>
+  <br>
+<fotter>
+  See the  Readme file for tech stack and backend applications used in the app in the aa_app and backend folders
+  </fotter>
+Many awesome futures yet to come..
+  <br>
+![image](https://user-images.githubusercontent.com/90249023/158633702-2b8d7124-b456-4f29-b54d-224aa8702b76.jpg)

@@ -29,8 +29,8 @@
 </blockquote>
   <br>
 <fotter>
-  See the  Readme file for tech stack and backend applications used in the app in the aa_app an backend folders
+  See the  Readme file for tech stack and backend applications used in the app in the aa_app and backend folders
   </fotter>
-I am still working on this app to add many awesome futures such as a chat option and such..
+Many awesome futures yet to come..
   <br>
 ![image](https://user-images.githubusercontent.com/90249023/158633702-2b8d7124-b456-4f29-b54d-224aa8702b76.jpg)

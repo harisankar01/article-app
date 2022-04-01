@@ -47,7 +47,7 @@ interface user{
     [x:string]:any,
 }
 
-  return (  
+  return (
    <div className='reg'>
       <h2>Welcome new user</h2>
         <div className='first'>
@@ -103,10 +103,13 @@ interface user{
                   />
                    <span>{errors?.email?.message } </span>
                 </div>
+                <input
+                    type="text" style={{display:'none'}} value=""
+                    {...register("profile_image")}></input>
                 <div>
                   <label htmlFor="user_type"> User_type </label>
                    
-                  <select    {...register("user_type",{required:"please select user"})}    
+                  <select {...register("user_type",{required:"please select user"})}    
                   name='user_type' >
                     <option>Admin</option>
                     <option>Author</option>

@@ -5,7 +5,7 @@
   </blockquote>
 
 
-#Referneces
+# Referneces
  Library used:
  - [Socket](https://socket.io/)
  - [Socket client](https://socket.io/docs/v3/client-installation/)

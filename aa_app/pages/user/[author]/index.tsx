@@ -56,7 +56,7 @@ export default function Welcome({author,val}:any){
     Status:string,
     Remark:string
   }
-
+  console.log(author.profile_image);
   let arr=new Array();
   val.map((n:article)=>(arr.push(n.time)))
     const rows=new Array(); 
@@ -115,7 +115,7 @@ export default function Welcome({author,val}:any){
       <span><img style={{width:20, height:20}} src="/static/message-svgrepo-com.svg" alt='message'/></span>  
       <span ><img style={{width:20, height:20}} src="/static/notification-svgrepo-com.svg" alt='notifiaction'/></span> 
       <span >{author.name}</span>
-        <Avatar></Avatar>
+        <Avatar src={author.profile_image}></Avatar>
        <span ><a href="#" onClick={()=>setdrop(!drop)}>
          <img style={{width:15, height:10}} src="/static/down-arrow-svgrepo-com.svg" alt='notifiaction'/></a>
          </span> 
@@ -143,7 +143,7 @@ export default function Welcome({author,val}:any){
                   ((row.status==='Pending' && 'yellow') ||
                   (row.status==='Completed' && 'green') ||
                   (row.status==='Rejected' && 'red') || ('null')
-                  )                
+                  )
               }}>  
                 {}
                 </Grid>

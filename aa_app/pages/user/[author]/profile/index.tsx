@@ -16,7 +16,19 @@ import { Area } from 'react-easy-crop/types';
 import { cropPreview } from './helper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-export default function Profile() {
+import { Db, ObjectId } from 'mongodb';
+import { connectToDatabase } from '../../../../src/service/db.service';
+import { GetServerSideProps, NextPage } from 'next/types';
+ interface props{
+     final:{ 
+      name:string,
+      email:string
+      _id:ObjectId,
+      user_type: string,
+      profile_image: string
+     }
+}
+export default function Profile({final}:props){
   const {query}=useRouter();
   interface final{
     user: string,
@@ -36,7 +48,7 @@ export default function Profile() {
   const [back, setback] = useState(false);
   const [Image, setImage] = useState<string>();
   const img=useRef<HTMLInputElement>(null);
-  const [imgurl, setimgurl] = useState<string>("");
+  const [imgurl, setimgurl] = useState<string>(final.profile_image);
   const trigger=(pop: { (): void; (): void; })=>{  
     pop();
    img.current?.click();
@@ -66,12 +78,11 @@ const setpic=async()=>{
         method: "POST",
         body: formdata
       }).then(r=>r.json());
-      setimgurl(await res.secure_url);
-      console.log(res);
+      setimgurl(res.secure_url);
       const send:final={
         user : query.name as string,
         user_id: query.author as string,
-        imgUrl: imgurl as string
+        imgUrl: res.secure_url as string
       }
        const contentType:string = 'application/json';
       const db=await fetch("/api/user",{
@@ -152,7 +163,7 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
        <h3> Avatar</h3>
         <div className='avatar'>
          <Avatar style={{marginRight:150,width:60,height:60}} src={imgurl}></Avatar>
-          <h2>{query.name}</h2>
+          <h2>{final.name}</h2>
          <h4>Click here to update profile</h4>
          <input  type='file' accept='image/*' ref={img}  style={{display: 'none'}} onChange={selectfile} />
           <Tooltip title="Account settings">
@@ -200,4 +211,29 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
       </Snackbar>
     </div>
   );
+}
+
+export const getServerSideProps:GetServerSideProps=async(context)=>{
+    let val=new Array();
+    let final:user;
+    interface user{
+      name:string,
+      email:string
+      _id:ObjectId,
+      user_type: string,
+      profile_image: string
+    }
+    const author=context.query.author;
+    const id=new ObjectId(author as string);
+try{
+    let db:Db=await connectToDatabase();
+    val=JSON.parse(JSON.stringify(await db.collection("login_page").find({_id:id}).toArray()));
+}catch(e){console.error(e)}
+final=await val[0];
+console.log(val);
+return {
+    props:{
+        final
+    }
+}
 }

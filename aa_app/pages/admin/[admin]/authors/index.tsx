@@ -224,9 +224,9 @@ try{
     val= JSON.parse(JSON.stringify(await db.collection("login_page").find({user_type:"Author"},{projection:{name:1,_id:1,email:1}}).toArray()));
     final=await Promise.all(val.map(async(n:user)=>{
       let str:string=(n._id as unknown) as string;
-      let article_no:number=await db.collection("articles").find({user_id:str}).count();
+      let article_no:number=await db.collection("articles").countDocuments({user_id:str});
       arrticle.push(article_no);
-      let art_acc:number=await db.collection("articles").find({$and:[{user_id:str},{Status:"Completed"}]}).count();
+      let art_acc:number=await db.collection("articles").countDocuments({$and:[{user_id:str},{Status:"Completed"}]});
       accept.push(art_acc);
       return {
         prop_1:arrticle,

@@ -2,7 +2,7 @@ import { Avatar,Tooltip } from '@material-ui/core'
 import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router'
 import React, { useState,useRef} from 'react'
-import { Wrapper } from './profile.styles'
+import { Inner, Wrapper } from './profile.styles'
 import SimpleBackdrop from '../../../../components/backDrop'
 import Button, { ButtonProps } from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -51,8 +51,13 @@ export default function Profile({final}:props){
   const [imgurl, setimgurl] = useState<string>(final.profile_image);
   const trigger=(pop: { (): void; (): void; })=>{  
     pop();
-   img.current?.click();
+    img.current?.click();
   }
+  const tri2=(pop: { (): void; (): void; })=>{  
+    pop();
+    setPass(true);
+  }
+const [Pass,setPass]=useState<boolean>(false);
 const [error, seterror] = useState<boolean>(false);
 const [open, setopen] = useState<boolean>(false);
 const [crop, setCrop] = useState<ff>({ x: 0, y: 0 });
@@ -175,7 +180,7 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
           </ColorButton>
           <Menu {...bindMenu(popupState)}>
             <MenuItem  onClick={()=>trigger(popupState.close)}>Update image</MenuItem>
-            <MenuItem onClick={popupState.close}>update password</MenuItem>
+            <MenuItem onClick={()=>tri2(popupState.close)}>update password</MenuItem>
             <MenuItem onClick={popupState.close}>update email</MenuItem>
           </Menu>
         </React.Fragment>
@@ -184,9 +189,34 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
          </Tooltip>
         </div>
       </div>
+      {Pass?(
       <div className='side'>
-        Password
+       <div className='avatar'><h3> Password</h3></div>
+        <Inner>
+          <div>
+          <label htmlFor='oldpass' style={{paddingRight:10}}>Old Password</label>
+          <input type='text' name='oldpass'/>
+          </div>
+          <div>
+          <label htmlFor='newpass' style={{paddingRight:10}} >New Password</label>
+           <input type='text' name='newpass'/>
+          </div>
+          <div>
+          <label htmlFor='confirm' style={{paddingRight:10}} >Confirm Password</label>
+           <input type='text' name='confirm'style={{marginTop:10}} />
+           </div>
+        <span>
+         <Button variant='contained' style={{marginTop:10}} onClick={()=>{
+           setPass(false);
+           }}>Submit</Button>
+         </span>
+        </Inner>
       </div>
+      ):(
+        <>
+        </>
+      )
+      }
     </Wrapper>
         )}
         <style jsx>
@@ -230,7 +260,6 @@ try{
     val=JSON.parse(JSON.stringify(await db.collection("login_page").find({_id:id}).toArray()));
 }catch(e){console.error(e)}
 final=await val[0];
-console.log(val);
 return {
     props:{
         final

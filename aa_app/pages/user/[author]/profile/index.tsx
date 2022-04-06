@@ -16,7 +16,18 @@ import { Area } from 'react-easy-crop/types';
 import { cropPreview } from './helper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-export default function Profile() {
+import { GetServerSideProps } from 'next/types';
+import { Db, ObjectId } from 'mongodb';
+import { connectToDatabase } from '../../../../src/service/db.service';
+interface props{
+     final:{ 
+      name:string,
+      email:string
+      _id:ObjectId,
+      profile_image: string
+     }
+}
+export default function Profile({final}:props) {
   const {query}=useRouter();
   interface final{
     user: string,
@@ -36,7 +47,7 @@ export default function Profile() {
   const [back, setback] = useState(false);
   const [Image, setImage] = useState<string>();
   const img=useRef<HTMLInputElement>(null);
-  const [imgurl, setimgurl] = useState<string>("");
+  const [imgurl, setimgurl] = useState<string>(final.profile_image);
   const trigger=(pop: { (): void; (): void; })=>{  
     pop();
    img.current?.click();
@@ -67,7 +78,6 @@ const setpic=async()=>{
         body: formdata
       }).then(r=>r.json());
       setimgurl(await res.secure_url);
-      console.log(res);
       const send:final={
         user : query.name as string,
         user_id: query.author as string,
@@ -200,4 +210,26 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
       </Snackbar>
     </div>
   );
+}
+
+
+export const getServerSideProps:GetServerSideProps=async(context)=>{
+    let val=new Array();
+    const id=new ObjectId(context.query.author as string);
+try{
+    let db:Db=await connectToDatabase();
+    val= JSON.parse(JSON.stringify(await db.collection("login_page").find({_id:id}).toArray()));
+}catch(e){console.error(e)}
+interface user{
+      name:string,
+      email:string
+      _id:ObjectId,
+      profile_image: string
+}
+const final:user=val[0];
+return {
+    props:{
+        final
+    }
+}
 }

@@ -13,7 +13,7 @@ import Slider from "@material-ui/core/Slider";
 import { pink } from '@mui/material/colors';
 import PopupState, { bindTrigger, bindMenu, } from 'material-ui-popup-state';
 import { Area } from 'react-easy-crop/types';
-import { cropPreview } from './helper';
+import  CropPreview  from '../../../../components/helper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { Db, ObjectId } from 'mongodb';
@@ -73,7 +73,7 @@ const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
 }));
 const setpic=async()=>{
     try{
-      const objurl:File=await cropPreview(Image as string,Area) as File;
+      const objurl:File=await CropPreview(Image as string,Area) as File;
       const formdata = new FormData();
       formdata.append('file', objurl);
       formdata.append('upload_preset', 'profilepics');

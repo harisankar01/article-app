@@ -142,7 +142,7 @@ export default function Welcome({ admin, val, finlae }: any) {
       {state && <Popup state={setstate} title={titl} content={cont} user_id={id} lock={setlock} />}
       <Wrapper>
         <div>
-          <span ><img style={{ width: 80, height: 80, top: 10 }} src="/static/vercel.svg" alt="img" className='img' /></span>
+          <span ><img style={{ width: 60, height: 70, top: 10 }} src="/static/vercel.svg" alt="img" className='img' /></span>
           <span style={{ marginLeft: 70 }}>Article Submission</span>
         </div>
         <div>

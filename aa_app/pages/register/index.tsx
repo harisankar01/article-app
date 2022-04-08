@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { Component,useState } from 'react';
 import { useForm } from "react-hook-form";
-import user from '../../src/models/user';
-import { Forma } from './register.styles';
 const RegForm = () => {
   const [msg, setmsg] = useState("");
   const router=useRouter();

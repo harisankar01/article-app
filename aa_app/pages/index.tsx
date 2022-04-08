@@ -73,7 +73,7 @@ useEffect(() => {
         <title>Login Page</title>
       </Head>
       <div className={styles.top}></div>
-      <div className={styles.text}>Articlelerator Login</div>
+      <div className={styles.text}>Login</div>
       <div>
         <form className={styles.form} >
           <div className='item1'>

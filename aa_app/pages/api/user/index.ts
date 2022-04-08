@@ -1,7 +1,4 @@
 import { Db, ObjectId } from 'mongodb'
-import user from '../../../src/models/user';
-import multer from 'multer';
-import nc from 'next-connect';
 import { connectToDatabase } from "../../../src/service/db.service";
 import { NextApiRequest,NextApiResponse } from "next";
 export default async function(req:NextApiRequest,res:NextApiResponse){

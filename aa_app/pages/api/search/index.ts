@@ -1,5 +1,4 @@
 import { Db } from 'mongodb'
-import user from '../../../src/models/user';
 import { connectToDatabase } from "../../../src/service/db.service";
 import { NextApiRequest,NextApiResponse } from "next";
 import { useRouter } from 'next/router';

@@ -3,7 +3,9 @@ import { Db, ObjectId } from 'mongodb'
 import { connectToDatabase } from "../../src/service/db.service";
 import { compare } from 'bcrypt';
 import cookie from 'cookie';
-import { sign } from 'jsonwebtoken';
+import {sign} from "jsonwebtoken";
+// import * as jose from 'jose'
+// import { createPrivateKey, createSecretKey, KeyObject } from "crypto";
 export default async function(req:NextApiRequest,res:NextApiResponse){  
     interface n{
         _id:ObjectId,
@@ -16,6 +18,7 @@ export default async function(req:NextApiRequest,res:NextApiResponse){
         password:string,
         rememberme:boolean
     }
+    // const ecPublicKey = await jose.importSPKI(process.env.NEXT_PUBLIC_SECRET_NAME as string, process.env.NEXT_PUBLIC_ALGO as string)
     try {
     const db:Db=await connectToDatabase()
     const userrr=JSON.parse(JSON.stringify(await db.collection("login_page").find({}).toArray()));
@@ -24,12 +27,14 @@ export default async function(req:NextApiRequest,res:NextApiResponse){
     let type:string="";
     let ff:boolean=false;
     const logger:user=JSON.parse(req.body)
-    const secret:any=process.env.NEXT_PUBLIC_SECRET_NAME
+    // const buff:Buffer=Buffer.from(process.env.NEXT_PUBLIC_SECRET_NAME as string,"utf-8")
+    // const secret:jose.KeyLike=createPrivateKey(buff);
+    const secret:string=process.env.NEXT_PUBLIC_SECRET_NAME as string;
     userrr.map((r:n)=>{
         if(r.name==logger.name && r.password==logger.password){
         const claims = {user_type:r.user_type,_id:r._id,rememberme:logger.rememberme};
-        const jwt = sign(claims, secret , { expiresIn: '1h' });
-        res.setHeader('Set-Cookie', cookie.serialize('auth', jwt, {
+          const jwt = sign(claims, secret , { expiresIn: '1h' });
+        res.setHeader('Set-Cookie', cookie.serialize('auth', jwt , {
           httpOnly: true,
           secure: process.env.NODE_ENV !== 'development',
           sameSite: 'strict',
@@ -45,7 +50,7 @@ export default async function(req:NextApiRequest,res:NextApiResponse){
         }
     })
     if(ff){
-      return res.status(200).json({status:"sucess",user:type,userid:user})
+       return res.status(200).json({status:"sucess",user:type,userid:user})
     }
     else{
          return res.json({status:valu,user:null,userid:null})

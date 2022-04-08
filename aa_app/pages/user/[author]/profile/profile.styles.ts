@@ -75,3 +75,5 @@ export const Inner=styled.div`
 }
     
 `
+const DD=styled.div``;
+export default DD;

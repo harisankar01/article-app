@@ -1,9 +1,7 @@
 import { Db } from 'mongodb'
-import user from '../../../src/models/user';
 import { connectToDatabase } from "../../../src/service/db.service";
 import { NextApiRequest,NextApiResponse } from "next";
 import { useRouter } from 'next/router';
-import { title } from 'process';
 export default async function(req:NextApiRequest,res:NextApiResponse){
 const { method } = req;
 const db:Db=await connectToDatabase();

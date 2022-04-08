@@ -107,7 +107,7 @@ export default function Welcome({author,val}:any){
     <>
     <Wrapper >
       <div>
-        <span><img style={{width:80, height:80, top:10}} src="/static/vercel.svg" alt="img" className='img'/></span>
+        <span><img style={{width:60, height:70, top:10}} src="/static/vercel.svg" alt="img" className='img'/></span>
         <span style={{marginLeft:70}}>Myarticles</span>
         </div>
       <div className='flex'>

@@ -10,15 +10,8 @@ interface props{
   lock:(x:boolean)=>void
 }
 const Popup:React.FC<props>=({state,title,content,user_id,lock})=>{
-  const [comment, setcomment] = React.useState("");
-  const [fres, setres] = React.useState("")
-  const handler=async(x:number)=>{
-    if(x===1){
-        setres("Rejected");
-    }
-    else{
-      setres("Completed");
-    }
+  const [comment, setcomment] = React.useState<string>("");
+  const handler=async(x:string)=>{
        const contentType:string = 'application/json';
        try {
       const res = await fetch('/api/article', {
@@ -29,7 +22,7 @@ const Popup:React.FC<props>=({state,title,content,user_id,lock})=>{
         },
         body: JSON.stringify({
           user_id:user_id,
-          result:fres,
+          result:x,
           remark:comment,
           title:title
         }),
@@ -68,10 +61,10 @@ const Popup:React.FC<props>=({state,title,content,user_id,lock})=>{
           <textarea onChange={(e)=>{setcomment(e.target.value)}}></textarea>
         </div>
         <div className="footer">
-          <button id="acceptBtn" onClick={()=>{handler(1)}}>
+          <button id="acceptBtn" onClick={()=>{handler("Rejected")}}>
            Reject
           </button>
-          <button onClick={()=>{handler(2)}}>Accept</button>
+          <button onClick={()=>{handler("Completed")}}>Accept</button>
         </div>
       </div>
     </div>

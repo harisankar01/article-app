@@ -1,4 +1,4 @@
-import { Avatar,Tooltip } from '@material-ui/core'
+import { Avatar,TextField,Tooltip } from '@material-ui/core'
 import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router'
 import React, { useState,useRef} from 'react'
@@ -194,6 +194,7 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
        <div className='avatar'><h3> Password</h3></div>
         <Inner>
           <div>
+            {/* <TextField id="outlined-basic"  label="Old Password" variant="outlined" /> */}
           <label htmlFor='oldpass' style={{paddingRight:10}}>Old Password</label>
           <input type='text' name='oldpass'/>
           </div>

@@ -24,12 +24,5 @@ export default function middleware(req:NextRequest){
             return NextResponse.rewrite(url)
         }
     }
-<<<<<<< HEAD
-}
-=======
 }
 
-
-
-   
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107

@@ -1,14 +1,14 @@
 .top {
-  position: absolute;
+  display: flex;
+  justify-content: center;
   width: 155px;
   height: 158px;
-  left: 493px;
-  bottom: 440px;
+  margin-left:540px;
   background-image: url("../public/static/vercel.svg");
 }
 
 .main {
-  min-height: 100vh;
+
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -18,24 +18,21 @@
 }
 
 .text {
-  position: absolute;
-  width: 261px;
-  height: 35px;
-  left: 453px;
-  bottom: 390px;
+  display: flex;
+  width: screen-width;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
   font-family: Roboto;
-  font-style: normal;
+  font-style: italic;
   font-weight: bold;
   font-size: 30px;
-  line-height: 35px;
-  color: #1a202c;
 }
 
 .form {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-top: 230px;
   margin-left: 100px;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
@@ -46,10 +43,10 @@
 }
 
 #name {
-  width: 350px;
+  width: 370px;
 }
 #pass {
-  width: 350px;
+  width: 370px;
 }
 .radio {
   display: inline-flex;
@@ -64,16 +61,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   max-width: 800px;
 }
-
+.button{
+  justify-content: center;
+}
 .button button {
   width: 380px;
   height: 30px;
   background: rgb(90, 90, 218);
   border-radius: 4px;
-  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.button button:hover{
+    opacity: 0.5;
+    color: rgb(190, 167, 17);
+    border-color: black;
 }
 
 .card:hover,
@@ -99,7 +103,7 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .grid {
     width: 100%;
     flex-direction: column;
@@ -108,33 +112,28 @@
 
 .register {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   margin-top: 30px;
-  margin-left: 414px;
-  width: 385px;
-  background-color: aquamarine;
-  border-radius: 3px;
-  border: 2px groove beige;
-  height: 30px;
-  align-items: center;
-  padding-right: 150px;
-}
-.register:hover {
-  opacity: 0.5;
-  color: rgb(88, 158, 135);
-  border-color: gold;
+  justify-content: center;
+  width: screen-width;
 }
 
-/* trail {
-  align-items: center;
-  color:#5ee7a7
-} */
 .warning {
   margin-left: 20px;
   width: 200px;
-  margin-top: 20px;
   background-color: rgb(179, 46, 46);
   color: #e2f024;
   border-radius: 3px;
   border: 2px thick tan;
+}
+@media screen and (max-width: 650px) {
+  .top {
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-left: 200px;
+
+  }
+
 }

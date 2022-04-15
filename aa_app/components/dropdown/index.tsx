@@ -40,7 +40,6 @@ function Menu({namee}:fiin){
        console.log("log in...");
      }
     }
-   
   return(
     <Wraper>
     <ul>

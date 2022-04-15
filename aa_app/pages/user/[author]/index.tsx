@@ -56,7 +56,7 @@ export default function Welcome({author,val}:any){
     Status:string,
     Remark:string
   }
-
+  console.log(author.profile_image);
   let arr=new Array();
   val.map((n:article)=>(arr.push(n.time)))
     const rows=new Array(); 
@@ -107,7 +107,11 @@ export default function Welcome({author,val}:any){
     <>
     <Wrapper >
       <div>
+<<<<<<< HEAD
+        <span><img style={{width:60, height:70, top:10}} src="/static/vercel.svg" alt="img" className='img'/></span>
+=======
         <span><img style={{width:50, height:70, top:10}} src="/static/login-svgrepo-com.svg" alt="img" className='img'/></span>
+>>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
         <span style={{marginLeft:70}}>Myarticles</span>
         </div>
       <div className='flex'>
@@ -143,7 +147,7 @@ export default function Welcome({author,val}:any){
                   ((row.status==='Pending' && 'yellow') ||
                   (row.status==='Completed' && 'green') ||
                   (row.status==='Rejected' && 'red') || ('null')
-                  )                
+                  )
               }}>  
                 {}
                 </Grid>

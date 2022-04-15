@@ -1,0 +1,134 @@
+
+.app__navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-black);
+    padding: 1rem 2rem;
+    color: var(--color-white);
+}
+.pen{
+    display: grid;
+    margin-top: 10%;
+    color: var(--color-crimson);
+}
+.logo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+}
+
+.links li {
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.links li:hover {
+    color: var(--color-grey);
+}
+
+.login {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login a {
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: .5s ease;
+}
+
+.login a:hover {
+    border-bottom: 1px solid var(--color-golden);
+}
+
+.login div {
+    width: 1px;
+    height: 30px;
+    background: var(--color-grey);
+}
+
+.smallscreen {
+    display: none;
+}
+
+.smallscreen_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-black);
+    transition: .5s ease;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.smallscreen_overlay .overlay__close {
+    font-size: 27px;
+    color: var(--color-golden);
+    cursor: pointer;
+    background-color: antiquewhite;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.smallscreen_links {
+    list-style: none;
+    margin-top: 90px;
+}
+
+.smallscreen_links li {
+    margin: 2rem;
+    cursor: pointer;
+    color: var(--color-golden);
+    font-size: 2rem;
+
+    text-align: center;
+    font-family: var(--font-base);
+}
+
+.smallscreen_links li:hover {
+    color: var(--color-white);
+}
+
+@media screen and (min-width: 2000px) {
+    .logo h3 {
+        width: 210px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .links {
+        display: none;
+    }
+
+    .smallscreen {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .app__navbar {
+        padding: 1rem;
+    }
+
+    .login {
+        display: none;
+    }
+
+}

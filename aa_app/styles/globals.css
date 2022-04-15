@@ -5,10 +5,21 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+*{
+  scroll-behavior: smooth;
+}
+:root{
+--color-golden: #DCCA87;
+--color-black: #0C0C0C;
+--color-gray: #545454;
+--color-crimson: #F5EFDB;
+--color-grey: #AAAAAA;
+--color-white: #FFFFFF;
+}
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 * {

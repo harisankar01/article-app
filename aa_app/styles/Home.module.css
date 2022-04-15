@@ -3,8 +3,14 @@
   justify-content: center;
   width: 155px;
   height: 158px;
+<<<<<<< HEAD
   margin-left:540px;
   background-image: url("../public/static/vercel.svg");
+=======
+  left: 493px;
+  bottom: 440px;
+  background-image: url("../public/static/login-svgrepo-com.svg");
+>>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
 }
 
 .main {

@@ -33,4 +33,4 @@
   </fotter>
 Many awesome futures yet to come..
   <br>
-<img src="https://user-images.githubusercontent.com/90249023/158633702-2b8d7124-b456-4f29-b54d-224aa8702b76.jpg"/>
+<img src="https://user-images.githubusercontent.com/90249023/162473683-6f6c9a89-07ec-47e7-9548-3b7a9bef7cd1.png"/>

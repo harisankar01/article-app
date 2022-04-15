@@ -1,6 +1,9 @@
+import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { Component,useState } from 'react';
 import { useForm } from "react-hook-form";
+import {ButtonContainer, InputContainer, Main, Msg, StyledButton, StyledInput, StyledSelect} from './register.styles'
+import  { WelcomeText, MainContainer } from './register.styles'
 const RegForm = () => {
   const [msg, setmsg] = useState("");
   const router=useRouter();
@@ -13,7 +16,11 @@ const RegForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  interface user{
+    [x:string]:any,
+}
   const formSubmit = async(data:user)=>{
+    console.log(data);
     const contentType:string = 'application/json'
     try {
       const res = await fetch('/api/user', {
@@ -30,6 +37,10 @@ const RegForm = () => {
           await sleep(1700);
           router.push('/');
         }
+        else{
+          console.log("errrrr");
+          
+        }
       if (!res.ok) {
         const status:any=res.status ;
         throw new Error(status as string)
@@ -38,28 +49,20 @@ const RegForm = () => {
       console.error(error)
     }
   };
-
-
-
-interface user{
-    [x:string]:any,
-}
-
   return (
-   <div className='reg'>
-      <h2>Welcome new user</h2>
+<Main>
+   <MainContainer>
+      <WelcomeText>Welcome new user</WelcomeText>
         <div className='first'>
           <form
             method="POST"
             onSubmit={handleSubmit(formSubmit)}
             autoComplete="off"
           >
-              <div>
-                <h2> Register </h2>
-              </div>
-                <div>
+                <WelcomeText> Register </WelcomeText>
+                <InputContainer>
                   <label htmlFor="name"> Name </label>
-                  <input
+                  <StyledInput
                     type="text"
                      {...register("name",{required:"please specify your name",
                         pattern: {
@@ -70,10 +73,8 @@ interface user{
                     placeholder="Name"
                   />
                    <span>{errors?.name?.message} </span>
-                </div>
-              <div>
                   <label htmlFor="password"> Password </label>
-                  <input
+                  <StyledInput
                     type="password"
                     {...register("password",{required:"password is required",
                      pattern: {
@@ -85,10 +86,8 @@ interface user{
                     placeholder="Password"
                   />
                    <span>{errors?.password?.message} </span>
-                </div>
-                <div>
                   <label htmlFor="email"> Email </label>
-                  <input
+                  <StyledInput
                     type="text"
                     {...register("email",{required:"please enter your email",
                      pattern: {
@@ -100,75 +99,29 @@ interface user{
                     placeholder="Email"
                   />
                    <span>{errors?.email?.message } </span>
-                </div>
-                <input
+                </InputContainer>
+                {/* <Input
                     type="text" style={{display:'none'}} value=""
-                    {...register("profile_image")}></input>
+                    {...register("profile_image")}></Input> */}
                 <div>
                   <label htmlFor="user_type"> User_type </label>
-                   
-                  <select {...register("user_type",{required:"please select user"})}    
+                  <StyledSelect {...register("user_type",{required:"please select user"})}    
                   name='user_type' >
                     <option>Admin</option>
                     <option>Author</option>
-                  </select>
+                  </StyledSelect>
                    <span>{errors?.user_type?.message} </span>
                 </div>
-                <div>
-                  <button type="submit">
-                    Register Now
-                  </button>
-                </div>
+                <ButtonContainer>
+                  <Button type='submit' variant="contained" >Register </Button>
+                </ButtonContainer>
           </form>
-          <div className='final'>{msg}</div>
+          {msg &&<Msg >{msg}</Msg>}
           </div>
-          <style jsx>{`
-        .reg{
-      display:grid;
-      justify-content:center;
-      width:screen width;
-      height:600px;
-      background-color:rgb(186,246,255);
-    }
-    .first{
-      width:550px;
-      height:500px;
-      display:inline-grid;
-      background-color:rgb(237,241,255);
-      border-radius:5px;
-      border:4px groove rgb(43,255,86);
-      box-shadow: black;
-    }
-     div{
-          display:grid;
-          justify-content:center;
-      }
-      input{
-          border-color:black;
-          width:300px;
-      }
-      input:hover{
-        border-style:groove;
-        border-color:rgb(108,255,71);
-      }
-      span{
-          background-color:red;
-          color:black:
-          font-size:23px;
-          padding-left:20px;
-          margin-top:5px;
-      }
-      .final{
-        margin-left:20px;
-        width:200px;
-        height:60px;
-        color:blue;
-      }
-          `
-          }
-          </style>
-          </div>
+      </MainContainer>
+</Main>
   );
 };
+
 
 export default RegForm;

@@ -6,6 +6,7 @@ const { method } = req;
 switch (method) {
      case 'POST':
       try {
+        console.log(req.body);
         const db:Db=await connectToDatabase()
         db.collection("login_page").insertOne(req.body);
         res.status(201).json({ success: true})

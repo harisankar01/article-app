@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react'
 import styles from '../../styles/Home.module.css'
-
+import Spline from '@splinetool/react-spline';
 const LoginPage:NextPage=()=>{
          const [remember, setremember] = useState(false);
   const init={
@@ -65,6 +65,10 @@ useEffect(() => {
     }
 }, []);
 return(
+  <>
+  {/* <div>
+     <Spline scene="https://draft.spline.design/n5n9JJzoz8VWymRn/scene.spline" />
+  </div> */}
 <div className="container">
       <div className={styles.warning} >{warn}</div>
         <title>Login Page</title>
@@ -104,6 +108,7 @@ return(
       }
       `}</style>
     </div>
+    </>
 )
 }
-export  default LoginPage;
+export default LoginPage;

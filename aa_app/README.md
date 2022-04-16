@@ -14,16 +14,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 To learn more, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js ](https://nextjs.org/docs)
 - [Mongodb](https://www.mongodb.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-Other Resources:
+Other Resources and libraries used:
 
 - [Create next app with ts](https://nextjs.org/docs/api-reference/create-next-app)
 - [Mongodb atlas for your first project](https://www.mongodb.com/cloud/atlas)
 - [Material ui for react](https://mui.com/)
+- [React spring Parallax](https://react-spring.io/components/parallax)
+- [Cloudinary for uploading profile images](https://cloudinary.com/)
+- [Styled Components](https://styled-components.com/)
 
 ## Deployment
-
-I have used the Heroku platform [heroku Platform](https://dashboard.heroku.com/).
+You can deploy directly from the command line using [Heroku Platform](https://www.heroku.com/platform) 

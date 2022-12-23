@@ -3,14 +3,8 @@
   justify-content: center;
   width: 155px;
   height: 158px;
-<<<<<<< HEAD
   margin-left:540px;
   background-image: url("../public/static/vercel.svg");
-=======
-  left: 493px;
-  bottom: 440px;
-  background-image: url("../public/static/login-svgrepo-com.svg");
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
 }
 
 .main {
@@ -29,6 +23,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 30px;
+  color: white;
   font-family: Roboto;
   font-style: italic;
   font-weight: bold;
@@ -49,9 +44,13 @@
 }
 
 #name {
+  border:rgb(218,90,90) thick;
+  height: 5vh;
   width: 370px;
 }
 #pass {
+  border: rgb(218, 90, 90) thick;
+  height: 5vh;
   width: 370px;
 }
 .radio {
@@ -71,6 +70,7 @@
 }
 .button{
   justify-content: center;
+  margin-bottom: 25px;
 }
 .button button {
   width: 380px;

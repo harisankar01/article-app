@@ -139,3 +139,6 @@ export const Msg=styled.div`
   color: bisque;
   border-radius: 3px;
 `;
+const vv=styled.div`
+`;
+export default vv;

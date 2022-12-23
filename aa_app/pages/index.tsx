@@ -1,14 +1,11 @@
-import type { NextApiResponse, NextPage } from 'next'
-import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react'
+import type { NextPage } from 'next'
+import { useState, useRef } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GrArticle } from 'react-icons/gr';
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Homepage from '../styles/Homepage.module.css'
-import { ObjectId } from 'mongodb'
 import {IParallax, Parallax,ParallaxLayer} from "@react-spring/parallax"
-import { url } from 'inspector';
 const Home: NextPage = () => {
  const router=useRouter();
 const [toggleMenu, setToggleMenu] = useState(false);

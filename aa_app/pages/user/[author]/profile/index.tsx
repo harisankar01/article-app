@@ -16,33 +16,18 @@ import { Area } from 'react-easy-crop/types';
 import  CropPreview  from '../../../../components/helper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-<<<<<<< HEAD
-import { Db, ObjectId } from 'mongodb';
-import { connectToDatabase } from '../../../../src/service/db.service';
-import { GetServerSideProps, NextPage } from 'next/types';
- interface props{
-=======
 import { GetServerSideProps } from 'next/types';
 import { Db, ObjectId } from 'mongodb';
 import { connectToDatabase } from '../../../../src/service/db.service';
 interface props{
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
      final:{ 
       name:string,
       email:string
       _id:ObjectId,
-<<<<<<< HEAD
-      user_type: string,
-      profile_image: string
-     }
-}
-export default function Profile({final}:props){
-=======
       profile_image: string
      }
 }
 export default function Profile({final}:props) {
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
   const {query}=useRouter();
   interface final{
     user: string,
@@ -97,11 +82,7 @@ const setpic=async()=>{
         method: "POST",
         body: formdata
       }).then(r=>r.json());
-<<<<<<< HEAD
-      setimgurl(res.secure_url);
-=======
       setimgurl(await res.secure_url);
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
       const send:final={
         user : query.name as string,
         user_id: query.author as string,
@@ -262,25 +243,6 @@ const CropComplete = (AreaP:Area, AreaPix:Area) => {
   );
 }
 
-<<<<<<< HEAD
-export const getServerSideProps:GetServerSideProps=async(context)=>{
-    let val=new Array();
-    let final:user;
-    interface user{
-      name:string,
-      email:string
-      _id:ObjectId,
-      user_type: string,
-      profile_image: string
-    }
-    const author=context.query.author;
-    const id=new ObjectId(author as string);
-try{
-    let db:Db=await connectToDatabase();
-    val=JSON.parse(JSON.stringify(await db.collection("login_page").find({_id:id}).toArray()));
-}catch(e){console.error(e)}
-final=await val[0];
-=======
 
 export const getServerSideProps:GetServerSideProps=async(context)=>{
     let val=new Array();
@@ -296,14 +258,9 @@ interface user{
       profile_image: string
 }
 const final:user=val[0];
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107
 return {
     props:{
         final
     }
 }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> cfb659955d99e2518fb3214d909e40d7d8c34107

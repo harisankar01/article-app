@@ -39,7 +39,7 @@ border-radius:5px;
     overflow: hidden !important;
     border-radius: initial;
 }
-}
+
 }
 `;
 export const Crop=styled.div`

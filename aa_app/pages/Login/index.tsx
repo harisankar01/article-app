@@ -65,11 +65,11 @@ useEffect(() => {
     }
 }, []);
 return(
-  <>
-  {/* <div>
-     <Spline scene="https://draft.spline.design/n5n9JJzoz8VWymRn/scene.spline" />
-  </div> */}
-<div className="container">
+  <div className="container">
+   {/* <div style={{float:'left',width:90,height:80}}>
+	  <Spline scene="https://draft.spline.design/n5n9JJzoz8VWymRn/scene.spline" />
+	</div> */}
+<div  className="container">
       <div className={styles.warning} >{warn}</div>
         <title>Login Page</title>
       <div className={styles.top}></div>
@@ -77,13 +77,13 @@ return(
       <div>
         <form className={styles.form} >
           <div className='item1'>
-            <h2>Username</h2>
+            <h2 style={{color:"white"}}>Username</h2>
           <input name='name' id={styles.name} type='text' value={login.name} onChange={(e)=>{
             setlogin({...login, name:e.target.value});
           }}></input>
           </div>
           <div className='item2'>
-            <h2>Password</h2>
+            <h2 style={{color:"white"}} >Password</h2>
             <input name='pass' id={styles.pass} type='password' value={login.password} onChange={(e)=>{
               setlogin({...login,password:e.target.value});
             }}></input>
@@ -93,8 +93,8 @@ return(
             setremember(!remember);
             setlogin({...login,rememberme:remember})
             }}></input>
-            <label htmlFor='rad'>Remember ME</label>
-           <h4> <Link href='/'> Forget Password?</Link></h4>
+            <label htmlFor='rad' style={{color:"white"}}>Remember ME</label>
+           <h4 style={{color:"white"}}> <Link href='/' > Forget Password?</Link></h4>
           </div>
           <div className={styles.button}>
             <button type='submit' onClick={handler}>Login Now</button>
@@ -103,12 +103,12 @@ return(
       </div >
       <style jsx>{`
       .container{
+        height:"100vh";
         background-color: #1a202c;
-
       }
       `}</style>
     </div>
-    </>
+    </div>
 )
 }
 export default LoginPage;

@@ -1,4 +1,4 @@
-# [article-app](https://author-admin-app.herokuapp.com/)
+# [article-app](https://63cf06faca597a19475e4b3c--keen-semifreddo-0ddf24.netlify.app/)
 
 ## Description and features
 

@@ -1,10 +1,10 @@
-<h1>Tech Stack</h1>
-<ul>
-  <li>React with Next js </li>
-  <li>TypeScript</li>
-  <li>Mongodb</li>
-</ul>
-<h3>I have used different liberaries such as styled components .. in this project</h3>
+# Tech Stack
+
+- React with Next js
+- TypeScript
+- Mongodb
+
+## Different styling liberaries like styled components have been used in this project
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -26,4 +26,4 @@ Other Resources:
 
 ## Deployment
 
-I have used the Heroku platform [heroku Platform](https://dashboard.heroku.com/).
+Deployment is made through netify [Netlify Platform](https://app.netlify.com/).

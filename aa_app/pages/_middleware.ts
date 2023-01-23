@@ -1,9 +1,5 @@
 /* istanbul ignore file */
 import { NextRequest, NextResponse } from "next/server";
-import * as jose from 'jose'
-import * as dotenv from "dotenv";
-dotenv.config();
-const secret:any= process.env.NEXT_PUBLIC_SECRET_NAME;
 export default function middleware(req:NextRequest){
     const {cookies} =req;
     const jwt=cookies.auth;

@@ -35,6 +35,16 @@ npm run dev
 
 ```
 
+## Sample Credentials:
+```
+Author: 
+Username: kar9@mepco.ac.in
+Password: sankar123
+Admin:
+username: ram@gamil.com
+Password: 123456
+```
+
 > a next js app about writing articles and submitting them for review
 > See the Readme file for tech stack and backend applications used in the app in the aa_app and backend folders
 
